@@ -23,8 +23,28 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import AvailabilityDay from "@/components/custom/availability-day"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Payment, columns } from "./columns"
+import { DataTable } from "./data-table"
 
-export default function Schedule() {
+async function getData(): Promise<Payment[]> {
+    // Fetch data from your API here.
+    return [
+        {
+            id: "728ed52f",
+            event: "Trekking Manquehuito",
+            email: "m@example.com",
+            date: "4 ene 2024",
+            time: "17:00 - 23:00",
+            status: "pagada",
+        },
+        // ...
+    ]
+}
+
+export default async function Bookings() {
+    const data = await getData()
+
     return (
         <div className="flex min-h-screen flex-col space-y-6">
             <header className="sticky top-0 z-40 border-b bg-background">
@@ -34,7 +54,7 @@ export default function Schedule() {
                             <h2 className="hidden items-center space-x-2 md:flex text-2xl font-semibold">Ginvo UI</h2>
                         </Link>
                         <nav className="hidden gap-6 md:flex">
-                            <Link href="/bookings" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Reservas</Link>
+                            <Link href="#" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Reservas</Link>
                             <Link href="/schedule" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Agenda</Link>
                             <Link href="#" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Servicios</Link>
                         </nav>
@@ -82,54 +102,36 @@ export default function Schedule() {
                                     href="#"
                                     className="flex w-full items-center rounded-md p-2 hover:underline"
                                 >
-                                    Disponibilidad
+                                    Reservas
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </aside>
-                <main className="flex max-w-screen-sm flex-1 flex-col overflow-hidden space-y-4">
+                <main className="flex w-full flex-1 flex-col overflow-hidden space-y-4">
                     <div className="space-y-0">
                         <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
-                            Disponibilidad
+                            Reservas
                         </h1>
                         <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-                            Indica la disponibilidad en días y horas para cada semana.
+                            Gestiona las reservas a tus eventos futuros y pasados.
                         </p>
                     </div>
-                    <Card>
-                        <CardContent className="p-4 space-y-4">
-                            <AvailabilityDay day="Lunes" />
-                            <AvailabilityDay day="Martes" />
-                            <AvailabilityDay day="Miércoles" />
-                            <AvailabilityDay day="Jueves" />
-                            <AvailabilityDay day="Viernes" />
-                            <AvailabilityDay day="Sábado" />
-                            <AvailabilityDay day="Domingo" />
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardContent className="p-4">
-                            <div className="flex w-full max-w-sm items-center space-x-16">
-                                <Label htmlFor="zone">Zona horaria</Label>
-                                <Select id="zone">
-                                    <SelectTrigger className="w-[180px]">
-                                        <SelectValue placeholder="Santiago Chile" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Zonas horarias</SelectLabel>
-                                            <SelectItem value="apple">(UTC-02:00) Salvador</SelectItem>
-                                            <SelectItem value="banana">(UTC-01:00) Cabo verde</SelectItem>
-                                            <SelectItem value="blueberry">(UTC) Dublin</SelectItem>
-                                            <SelectItem value="grapes">(UTC+01:00) Amsterdam</SelectItem>
-                                            <SelectItem value="pineapple">(UTC+02:00) Brussels</SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </CardContent>
-                    </Card>
+
+                    <Tabs defaultValue="next" className="w-full">
+                        <TabsList>
+                            <TabsTrigger value="next">Próximas</TabsTrigger>
+                            <TabsTrigger value="confirm">Por confirmar</TabsTrigger>
+                            <TabsTrigger value="canceled">Canceladas</TabsTrigger>
+                            <TabsTrigger value="past">Pasadas</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="next">
+                            <DataTable columns={columns} data={data} />  
+                        </TabsContent>
+                        <TabsContent value="confirm">Aún no hay reservas por confirmar.</TabsContent>
+                        <TabsContent value="canceled">Aún no hay reservas canceladas.</TabsContent>
+                        <TabsContent value="past">Aún no hay reservas pasadas.</TabsContent>
+                    </Tabs>          
                 </main>
             </div>
         </div>
