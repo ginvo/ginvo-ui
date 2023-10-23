@@ -112,7 +112,7 @@ export default function Schedule() {
                         <CardContent className="p-4">
                             <div className="flex w-full max-w-sm items-center space-x-16">
                                 <Label htmlFor="zone">Zona horaria</Label>
-                                <Select id="zone">
+                                <Select>
                                     <SelectTrigger className="w-[180px]">
                                         <SelectValue placeholder="Santiago Chile" />
                                     </SelectTrigger>

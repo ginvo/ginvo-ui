@@ -20,7 +20,7 @@ export default function Home() {
                             <h2 className="hidden items-center space-x-2 md:flex text-2xl font-semibold">Ginvo UI</h2>
                         </Link>
                         <nav className="hidden gap-6 md:flex">
-                            <Link href="#" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Reservas</Link>
+                            <Link href="/booking" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Reservas</Link>
                             <Link href="/schedule" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Agenda</Link>
                             <Link href="#" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Servicios</Link>
                         </nav>
