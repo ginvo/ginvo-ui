@@ -23,8 +23,8 @@ export default function HeaderApp() {
           <nav className="hidden gap-6 md:flex">
             <Link href="/" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Dashboard</Link>
             <Link href="/bookings" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Reservas</Link>
-            <Link href="/schedule" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Agenda</Link>
             <Link href="/events" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Eventos</Link>
+            <Link href="/schedule" className='flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm'>Agenda</Link>
           </nav>
         </div>
         <DropdownMenu>
