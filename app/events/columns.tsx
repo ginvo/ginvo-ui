@@ -8,9 +8,10 @@ export type Payment = {
   id: string
   event: string
   duration: string
+  endDate: string
   price: string
   slots: string
-  status: "activo" | "inactivo" | "borrador"
+  booking: "completa" | "por completar"
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -23,6 +24,10 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Duración",
   },
   {
+    accessorKey: "endDate",
+    header: "Término",
+  },
+  {
     accessorKey: "price",
     header: "Precio",
   },
@@ -31,7 +36,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Cupos",
   },
   {
-    accessorKey: "status",
-    header: "Estado",
+    accessorKey: "booking",
+    header: "Reserva",
   },
 ]
