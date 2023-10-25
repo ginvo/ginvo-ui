@@ -84,10 +84,12 @@ export default async function Events() {
                                 Crea eventos para que la gente que invites reserve en tu agenda.
                             </p>
                         </div>
-                        <Button>
-                            <Plus className="mr-2 h-4 w-4" />
-                            Nuevo evento
-                        </Button>
+                        <Link href="/new-event">
+                            <Button>
+                                <Plus className="mr-2 h-4 w-4" />
+                                Nuevo evento
+                            </Button>
+                        </Link>
                     </div>
 
                     <Tabs defaultValue="running" className="w-full">
