@@ -17,7 +17,7 @@ async function getData(): Promise<Payment[]> {
         },
         {
             id: "453egf345",
-            event: "Sesión 3: Módulo Emociones",
+            event: "Terapia Consultiva",
             email: "m@example.com",
             date: "4 ene 2024",
             time: "18:00 - 20:00",
@@ -69,13 +69,15 @@ export default async function Bookings() {
                     </div>
                 </aside>
                 <main className="flex w-full flex-1 flex-col overflow-hidden space-y-4">
-                    <div className="space-y-0">
-                        <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
-                            Reservas
-                        </h1>
-                        <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-                            Gestiona las reservas a tus eventos futuros y pasados.
-                        </p>
+                    <div className="flex items-center justify-between">
+                        <div className="space-y-0">
+                            <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                                Reservas
+                            </h1>
+                            <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
+                                Gestiona las reservas a tus eventos futuros y pasados.
+                            </p>
+                        </div>
                     </div>
 
                     <Tabs defaultValue="next" className="w-full">
@@ -86,12 +88,12 @@ export default async function Bookings() {
                             <TabsTrigger value="past">Pasadas</TabsTrigger>
                         </TabsList>
                         <TabsContent value="next">
-                            <DataTable columns={columns} data={data} />  
+                            <DataTable columns={columns} data={data} />
                         </TabsContent>
                         <TabsContent value="confirm">Aún no hay reservas por confirmar.</TabsContent>
                         <TabsContent value="canceled">Aún no hay reservas canceladas.</TabsContent>
                         <TabsContent value="past">Aún no hay reservas pasadas.</TabsContent>
-                    </Tabs>          
+                    </Tabs>
                 </main>
             </div>
         </div>
