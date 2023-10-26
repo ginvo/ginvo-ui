@@ -1,4 +1,4 @@
-import HeaderApp from '@/components/custom/header-app'
+import HeaderApp from '@/components/ui/header-app'
 
 export default function Home() {
   return (
